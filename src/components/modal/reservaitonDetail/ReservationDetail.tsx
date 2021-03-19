@@ -4,6 +4,7 @@ import * as S from "../style";
 
 type userType = {
   name: string;
+  id: string;
   number: string;
 };
 
@@ -28,16 +29,21 @@ interface Props {
   reservation: reservationType;
   nextButtonClickHandler: () => void;
   exitButtonClickHandler: () => void;
+  user: userType;
 }
 
 const ReservationDetail: FC<Props> = ({
   reservation,
   exitButtonClickHandler,
   nextButtonClickHandler,
+  user,
 }) => {
   const renderMember = (member: userType[]) => {
     return member.map((member: userType) => (
-      <S.ModalUserListItem key={member.name}>
+      <S.ModalUserListItem
+        key={member.name}
+        leader={member.number === reservation.leader.number}
+      >
         <p>{member.number}</p>
       </S.ModalUserListItem>
     ));
@@ -68,14 +74,20 @@ const ReservationDetail: FC<Props> = ({
         </S.ModalInfoListItem>
         <S.ModalInfoListItem>{reservation.description}</S.ModalInfoListItem>
       </S.ModalInfoList>
-      <S.ModalUserList>{renderMember(reservation.member)}</S.ModalUserList>
+      <S.ModalUserList>
+        {renderMember([reservation.leader, ...reservation.member])}
+      </S.ModalUserList>
       <S.ModalButtonWrapper>
         <S.ModalButton nextButton={false} onClick={exitButtonClickHandler}>
           닫기
         </S.ModalButton>
-        <S.ModalButton nextButton={true} onClick={deleteButtonClickHandler}>
-          예약취소
-        </S.ModalButton>
+        {user.id === reservation.leader.id ? (
+          <S.ModalButton nextButton={true} onClick={deleteButtonClickHandler}>
+            예약취소
+          </S.ModalButton>
+        ) : (
+          ""
+        )}
       </S.ModalButtonWrapper>
     </div>
   );

@@ -49,6 +49,11 @@ const App: FC = () => {
     member: [],
     description: "",
   });
+  const [user, setUser] = useState<userType>({
+    name: "",
+    number: "",
+    id: "",
+  });
   return (
     <BrowserRouter>
       <Switch>
@@ -63,6 +68,8 @@ const App: FC = () => {
               modalType={modalType}
               setSelectedReservation={setSelectedReservation}
               setError={setError}
+              user={user}
+              setUser={setUser}
             />
           )}
         />
@@ -76,6 +83,8 @@ const App: FC = () => {
         bookingRoom={bookingRoom}
         setBookingRoom={setBookingRoom}
         selectedReservation={selectedReservation as reservationType}
+        setUser={setUser}
+        user={user}
       />
       {error !== 0 ? <ErrorModal error={error} setError={setError} /> : ""}
     </BrowserRouter>

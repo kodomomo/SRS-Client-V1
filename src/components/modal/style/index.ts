@@ -151,25 +151,35 @@ export const ModalUserList = styled.ul`
   flex-wrap: wrap;
   list-style: none;
   margin-bottom: 10px;
+  justify-content: center;
   > p {
     text-align: center;
   }
 `;
 
-export const ModalUserListItem = styled.li`
+export const ModalUserListItem = styled.li<{ leader?: boolean }>`
   width: 65px;
   height: 25px;
   margin: 2px;
-  background-color: #efefef;
   display: flex;
   font-size: 14px;
   justify-content: space-between;
   padding: 2px 5px;
-  color: #7d7d7d;
   box-sizing: border-box;
   align-items: center;
   justify-content: center;
+  ${({ leader }) =>
+    leader
+      ? css`
+          background-color: #2e2e2e;
+          color: white;
+        `
+      : css`
+          background-color: #efefef;
+          color: #7d7d7d;
+        `}
   > p.delete {
+    margin: 5px;
     margin-left: 5px;
   }
 `;
@@ -209,7 +219,7 @@ export const ModalInfoList = styled.ul`
 `;
 
 export const ModalInfoListItem = styled.li`
-  width: 100%;
+  width: 90%;
   font-size: 18px;
   font-weight: 100;
   margin: 3px;

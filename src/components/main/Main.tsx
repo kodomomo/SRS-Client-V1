@@ -21,6 +21,8 @@ interface Props {
   setBookingRoom: (value: roomType) => void;
   setError: (error: number) => void;
   setSelectedReservation: (value: reservationType) => void;
+  user: userType;
+  setUser: (user: userType) => void;
 }
 
 type userType = {
@@ -44,17 +46,14 @@ const Main: FC<Props> = ({
   setSelectedReservation,
   modalType,
   setError,
+  setUser,
+  user,
 }) => {
   const history = useHistory();
-  const [user, setUser] = useState<userType>({
-    name: "",
-    number: "",
-    id: "",
-  });
-  const [bookedRoom, setBookedRoom] = useState<roomType[]>([]);
+
   const [myReservation, setMyReservation] = useState<reservationType[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
-  const [seminaRoomList, setSeminaRoomList] = useState<Array<floorType>>([
+  const seminaRoomList = [
     {
       floor: 2,
       list: [
@@ -114,22 +113,11 @@ const Main: FC<Props> = ({
         },
       ],
     },
-  ]);
-  const isBookedRoom = (room: roomType) => {
-    let booked = false;
-    bookedRoom.map((bookedRoom) => {
-      if (bookedRoom.id === room.id) {
-        booked = true;
-      }
-      return bookedRoom;
-    });
-    return booked;
-  };
+  ];
   const renderRoomList = (seminaRoomList: Array<floorType>) =>
     seminaRoomList.map((floor) => (
       <MainRoomList
         floor={floor}
-        isBookedRoom={isBookedRoom}
         setBookingRoom={setBookingRoom}
         setModalType={setModalType}
         key={floor.floor}
@@ -139,6 +127,7 @@ const Main: FC<Props> = ({
     try {
       const token = localStorage.getItem("access_token");
       if (!token || token === "null" || token.length <= 0) return;
+      console.log(process.env.REACT_APP_SERVER_URL);
       const { data } = await axios.get(
         `${process.env.REACT_APP_SERVER_URL}/apply/my/seminar-room`,
         {

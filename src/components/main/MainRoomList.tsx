@@ -13,17 +13,11 @@ type roomType = {
 
 interface Props {
   floor: floorType;
-  isBookedRoom: (value: roomType) => boolean;
   setBookingRoom: (room: roomType) => void;
   setModalType: (type: string) => void;
 }
 
-const MainRoomList: FC<Props> = ({
-  floor,
-  isBookedRoom,
-  setBookingRoom,
-  setModalType,
-}) => {
+const MainRoomList: FC<Props> = ({ floor, setBookingRoom, setModalType }) => {
   const getRoomClickHandler = (room: roomType) => {
     return () => {
       setModalType("timeset");

@@ -13,6 +13,7 @@ type roomType = {
 
 type userType = {
   name: string;
+  id: string;
   number: string;
 };
 
@@ -33,6 +34,8 @@ interface Props {
   setError: (error: number) => void;
   error: number;
   selectedReservation: reservationType;
+  setUser: (user: userType) => void;
+  user: userType;
 }
 
 const Modal: FC<Props> = ({
@@ -41,7 +44,7 @@ const Modal: FC<Props> = ({
   bookingRoom,
   selectedReservation,
   setError,
-  error,
+  user,
 }) => {
   const [bookTime, setBookTime] = useState<Array<string>>([]);
   const [description, setDescription] = useState<string>("");
@@ -110,6 +113,7 @@ const Modal: FC<Props> = ({
                 reservation={selectedReservation}
                 nextButtonClickHandler={resetModalType}
                 exitButtonClickHandler={resetModalType}
+                user={user}
               />
             ) : (
               ""
