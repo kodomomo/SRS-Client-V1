@@ -4,27 +4,7 @@ import TimeSetModal from "./timeSetModal";
 import ReasonModal from "./reasonModal";
 import SearchUserModal from "./searchUserModal";
 import ReservationDetail from "./reservaitonDetail";
-import ErrorModal from "./errorModal";
-
-type roomType = {
-  id: number;
-  name: string;
-};
-
-type userType = {
-  name: string;
-  id: string;
-  number: string;
-};
-
-type reservationType = {
-  reservation_id: number;
-  room: string;
-  time: string;
-  leader: userType;
-  member: userType[];
-  description: string;
-};
+import { roomType, reservationType, userType } from "../../models";
 
 interface Props {
   type: string;

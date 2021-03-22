@@ -4,16 +4,7 @@ import axios from "axios";
 import MainRoomList from "./MainRoomList";
 import * as S from "./style";
 import MainMyReservation from "./MainMyReservation";
-
-type floorType = {
-  floor: number;
-  list: Array<roomType>;
-};
-
-type roomType = {
-  id: number;
-  name: string;
-};
+import { floorType, roomType } from "../../models";
 
 interface Props {
   modalType: string;

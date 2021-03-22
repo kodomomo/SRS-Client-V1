@@ -1,4 +1,5 @@
-import React, { FC, useState } from "react";
+import React, { FC, useEffect } from "react";
+import { roomType } from "../../../models";
 import * as S from "../style";
 
 interface Props {
@@ -10,16 +11,11 @@ interface Props {
   description: string;
 }
 
-type roomType = {
-  id: number;
-  name: string;
-};
-
 const timeEnum = {
   L: "점심시간",
   D: "저녁시간",
   "8": "8교시",
-  "9": "8교시",
+  "9": "9교시",
   "10": "10교시",
 };
 
@@ -34,6 +30,11 @@ const ReasonModal: FC<Props> = ({
   const inputChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     setDescription(event.target.value);
   };
+  useEffect(() => {
+    return () => {
+      setDescription("");
+    };
+  }, []);
   return (
     <div>
       <S.ModalReason>

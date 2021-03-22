@@ -1,11 +1,7 @@
 import axios from "axios";
 import React, { FC, useEffect, useState } from "react";
+import { roomType } from "../../../models";
 import * as S from "../style";
-
-type roomType = {
-  id: number;
-  name: string;
-};
 
 interface Props {
   nextButtonClickHandler: () => void;

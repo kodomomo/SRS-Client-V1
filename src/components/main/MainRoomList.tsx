@@ -1,15 +1,6 @@
 import React, { FC } from "react";
+import { floorType, roomType } from "../../models";
 import * as S from "./style";
-
-type floorType = {
-  floor: number;
-  list: Array<roomType>;
-};
-
-type roomType = {
-  id: number;
-  name: string;
-};
 
 interface Props {
   floor: floorType;

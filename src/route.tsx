@@ -6,26 +6,7 @@ import Modal from "./components/modal";
 import DDYZD from "./components/oauth";
 import SignIn from "./components/signIn";
 import ErrorModal from "./components/modal/errorModal";
-
-type roomType = {
-  id: number;
-  name: string;
-};
-
-type userType = {
-  name: string;
-  number: string;
-  id: string;
-};
-
-type reservationType = {
-  reservation_id: number;
-  room: string;
-  time: string;
-  leader: userType;
-  member: userType[];
-  description: string;
-};
+import { reservationType, roomType, userType } from "./models";
 
 const App: FC = () => {
   const [modalType, setModalType] = useState<string>("");
@@ -55,39 +36,41 @@ const App: FC = () => {
     id: "",
   });
   return (
-    <BrowserRouter>
-      <Switch>
-        <Route path="/signin" component={SignIn} />
-        <Route path="/oauth/ddyzd" component={DDYZD} />
-        <Route
-          path="/"
-          render={() => (
-            <Main
-              setModalType={setModalType}
-              setBookingRoom={setBookingRoom}
-              modalType={modalType}
-              setSelectedReservation={setSelectedReservation}
-              setError={setError}
-              user={user}
-              setUser={setUser}
-            />
-          )}
+    <div className="wrapper">
+      <BrowserRouter>
+        <Switch>
+          <Route path="/signin" component={SignIn} />
+          <Route path="/oauth/ddyzd" component={DDYZD} />
+          <Route
+            path="/"
+            render={() => (
+              <Main
+                setModalType={setModalType}
+                setBookingRoom={setBookingRoom}
+                modalType={modalType}
+                setSelectedReservation={setSelectedReservation}
+                setError={setError}
+                user={user}
+                setUser={setUser}
+              />
+            )}
+          />
+        </Switch>
+        <GlobalStyle />
+        <Modal
+          error={error}
+          setError={setError}
+          type={modalType}
+          setModalType={setModalType}
+          bookingRoom={bookingRoom}
+          setBookingRoom={setBookingRoom}
+          selectedReservation={selectedReservation as reservationType}
+          setUser={setUser}
+          user={user}
         />
-      </Switch>
-      <GlobalStyle />
-      <Modal
-        error={error}
-        setError={setError}
-        type={modalType}
-        setModalType={setModalType}
-        bookingRoom={bookingRoom}
-        setBookingRoom={setBookingRoom}
-        selectedReservation={selectedReservation as reservationType}
-        setUser={setUser}
-        user={user}
-      />
-      {error !== 0 ? <ErrorModal error={error} setError={setError} /> : ""}
-    </BrowserRouter>
+        {error !== 0 ? <ErrorModal error={error} setError={setError} /> : ""}
+      </BrowserRouter>
+    </div>
   );
 };
 

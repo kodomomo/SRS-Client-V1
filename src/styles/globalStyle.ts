@@ -103,6 +103,18 @@ input[type=number] {
     border-radius: 8px;
     background-color: #ff8888;
 }
+
+.wrapper {
+    display: flex;
+    justify-content: center;
+    background-color: #F3F3F3;
+  > div {
+    width: 100%;
+    max-width: 500px;
+    background-color: white;
+    box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.1);
+  }
+}
 `;
 
 export default global;
