@@ -27,9 +27,6 @@ const ReasonModal: FC<Props> = ({
   setDescription,
   description,
 }) => {
-  const inputChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setDescription(event.target.value);
-  };
   useEffect(() => {
     return () => {
       setDescription("");
@@ -47,22 +44,12 @@ const ReasonModal: FC<Props> = ({
           ))}
         </p>
       </S.ModalReason>
-      <S.ModalInput
-        placeholder="사유를 10자 이상으로 입력하세요"
-        onChange={inputChangeHandler}
-      />
+      <S.ModalInput placeholder="사유를 입력하세요." id="input" />
       <S.ModalButtonWrapper>
         <S.ModalButton nextButton={false} onClick={exitButtonClickHandler}>
           취소
         </S.ModalButton>
-        <S.ModalButton
-          nextButton={true}
-          onClick={() => {
-            if (description.length <= 10) return;
-            nextButtonClickHandler();
-          }}
-          disable={description.length <= 10}
-        >
+        <S.ModalButton nextButton={true} onClick={nextButtonClickHandler}>
           다음
         </S.ModalButton>
       </S.ModalButtonWrapper>
