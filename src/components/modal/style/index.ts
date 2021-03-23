@@ -123,6 +123,7 @@ export const ModalInput = styled.input`
   box-sizing: border-box;
   margin-bottom: 20px;
   color: #7d7d7d;
+  user-select: text;
 `;
 
 export const ModalSearchInput = styled.div`

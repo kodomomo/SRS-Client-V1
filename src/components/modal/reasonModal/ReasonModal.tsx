@@ -44,7 +44,9 @@ const ReasonModal: FC<Props> = ({
           ))}
         </p>
       </S.ModalReason>
-      <S.ModalInput placeholder="사유를 입력하세요." id="input" />
+      <form>
+        <S.ModalInput placeholder="사유를 입력하세요." id="input" type="text" />
+      </form>
       <S.ModalButtonWrapper>
         <S.ModalButton nextButton={false} onClick={exitButtonClickHandler}>
           취소

@@ -21,6 +21,7 @@ export const Main = styled.div`
   height: 100vh;
   padding-top: 40px;
   box-sizing: border-box;
+  background-color: white;
 `;
 
 export const MainHeader = styled.div`
