@@ -159,7 +159,7 @@ export const ModalUserList = styled.ul`
 `;
 
 export const ModalUserListItem = styled.li<{ leader?: boolean }>`
-  width: 65px;
+  min-width: 65px;
   height: 25px;
   margin: 2px;
   display: flex;
@@ -169,6 +169,7 @@ export const ModalUserListItem = styled.li<{ leader?: boolean }>`
   box-sizing: border-box;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
   ${({ leader }) =>
     leader
       ? css`
@@ -182,6 +183,9 @@ export const ModalUserListItem = styled.li<{ leader?: boolean }>`
   > p.delete {
     margin: 5px;
     margin-left: 5px;
+  }
+  > p {
+    margin: 2px;
   }
 `;
 

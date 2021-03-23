@@ -60,6 +60,7 @@ const SearchUserModal: FC<Props> = ({
     users.map((user) => (
       <S.ModalUserListItem key={user.id}>
         <p>{user.number}</p>
+        <p>{user.name}</p>
         <p onClick={getDeleteSelectedUser(user)} className="delete">
           x
         </p>

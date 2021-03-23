@@ -9,6 +9,7 @@ const global = createGlobalStyle`
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    user-select: text;
 }
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
