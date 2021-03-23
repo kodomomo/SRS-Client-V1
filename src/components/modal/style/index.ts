@@ -169,7 +169,7 @@ export const ModalUserListItem = styled.li<{ leader?: boolean }>`
   box-sizing: border-box;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
+  cursor: default;
   ${({ leader }) =>
     leader
       ? css`
@@ -183,6 +183,7 @@ export const ModalUserListItem = styled.li<{ leader?: boolean }>`
   > p.delete {
     margin: 5px;
     margin-left: 5px;
+    cursor: pointer;
   }
   > p {
     margin: 2px;
