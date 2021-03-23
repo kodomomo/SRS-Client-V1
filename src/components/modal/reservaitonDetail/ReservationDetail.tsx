@@ -45,6 +45,7 @@ const ReservationDetail: FC<Props> = ({
         leader={member.number === reservation.leader.number}
       >
         <p>{member.number}</p>
+        <p>{member.name}</p>
       </S.ModalUserListItem>
     ));
   };
