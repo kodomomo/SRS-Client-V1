@@ -32,7 +32,6 @@ const Modal: FC<Props> = ({
     setModalType("reason");
   };
   const setModalTypeSearch = () => {
-    setDescription(document.getElementById("input")?.innerText as string);
     setModalType("search");
   };
   const resetModalType = () => {

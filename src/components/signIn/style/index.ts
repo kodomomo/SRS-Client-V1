@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { loading_bar } from "../../../statics/image/main";
 export const SignIn = styled.div`
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   padding: 60px;
   box-sizing: border-box;
   display: flex;

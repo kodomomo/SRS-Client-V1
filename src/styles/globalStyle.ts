@@ -93,16 +93,6 @@ input[type=number] {
     .react-pdf__Page {
     position: unset !important;
     }
-    ::-webkit-scrollbar {
-    width: 10px;
-    height: 10px;
-    }
-    ::-webkit-scrollbar-track-piece {
-    background-color: white;
-    }
-    ::-webkit-scrollbar-thumb {
-    border-radius: 8px;
-    background-color: #ff8888;
 }
 
 .wrapper {
@@ -113,6 +103,7 @@ input[type=number] {
     width: 100%;
     max-width: 500px;
     box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.1);
+    background-color: white;
   }
 }
 `;

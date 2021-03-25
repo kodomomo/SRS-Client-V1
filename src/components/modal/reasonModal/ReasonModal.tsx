@@ -25,13 +25,10 @@ const ReasonModal: FC<Props> = ({
   bookingRoom,
   bookTime,
   setDescription,
-  description,
 }) => {
-  useEffect(() => {
-    return () => {
-      setDescription("");
-    };
-  }, []);
+  const ReasonEventHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setDescription(e.target.value);
+  };
   return (
     <div>
       <S.ModalReason>
@@ -45,7 +42,12 @@ const ReasonModal: FC<Props> = ({
         </p>
       </S.ModalReason>
       <form>
-        <S.ModalInput placeholder="사유를 입력하세요." id="input" type="text" />
+        <S.ModalInput
+          placeholder="사유를 입력하세요."
+          id="input"
+          type="text"
+          onChange={ReasonEventHandler}
+        />
       </form>
       <S.ModalButtonWrapper>
         <S.ModalButton nextButton={false} onClick={exitButtonClickHandler}>

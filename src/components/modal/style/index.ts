@@ -2,7 +2,7 @@ import styled, { css } from "styled-components";
 
 export const ModalBackground = styled.div`
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   background-color: black;
   opacity: 0.7;
   position: absolute;
@@ -12,13 +12,14 @@ export const ModalBackground = styled.div`
 
 export const Modal = styled.div`
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   top: 0;
   z-index: 100;
   position: fixed;
+  background-color: transparent !important;
 `;
 
 export const ModalBody = styled.div`

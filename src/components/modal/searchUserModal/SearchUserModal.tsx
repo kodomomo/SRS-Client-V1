@@ -91,6 +91,7 @@ const SearchUserModal: FC<Props> = ({
     return users.map((user: userType) => user.id);
   };
   const makeReservation = (time: string) => {
+    console.log(description);
     return axios.post(
       `${process.env.REACT_APP_SERVER_URL}/apply/seminar-room`,
       {
