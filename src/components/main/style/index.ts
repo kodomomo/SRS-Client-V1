@@ -85,6 +85,7 @@ export const MainRoomListWrapper = styled.div`
   width: 100%;
   padding: 0px 20px;
   box-sizing: border-box;
+  cursor: pointer;
   > h5 {
     font-size: 21px;
     margin-bottom: 15px;
