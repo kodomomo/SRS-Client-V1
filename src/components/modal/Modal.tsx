@@ -83,6 +83,7 @@ const Modal: FC<Props> = ({
                 description={description}
                 room={bookingRoom}
                 setError={setError}
+                user={user}
                 bookTime={bookTime}
               />
             ) : (

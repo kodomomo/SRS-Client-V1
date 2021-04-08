@@ -8,7 +8,6 @@ const DDYZD = () => {
   const url = window.location.href;
   const params = new URL(url);
   const { REACT_APP_DDYZD_CLIENT_ID, REACT_APP_DDYZD_SECRET_KEY } = process.env;
-  console.log(REACT_APP_DDYZD_CLIENT_ID, REACT_APP_DDYZD_SECRET_KEY);
   const code = params.searchParams.get("code");
   const getOauthAccessToken = async () => {
     try {
@@ -35,7 +34,6 @@ const DDYZD = () => {
         }
       );
       localStorage.setItem("access_token", data.access_token);
-      console.log(`access_token: ${data.access_token}`);
       history.push("/");
     } catch (error) {
       history.push("/signin");

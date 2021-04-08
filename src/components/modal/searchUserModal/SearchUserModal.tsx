@@ -10,6 +10,7 @@ interface Props {
   room: roomType;
   bookTime: string[];
   setError: (error: number) => void;
+  user: userType;
 }
 
 type userType = {
@@ -25,6 +26,7 @@ const SearchUserModal: FC<Props> = ({
   room,
   bookTime,
   setError,
+  user,
 }) => {
   const [searchInput, setSearchInput] = useState<string>("");
   const [searchedUser, setSearchedUser] = useState<userType[]>([]);
@@ -66,17 +68,20 @@ const SearchUserModal: FC<Props> = ({
         </p>
       </S.ModalUserListItem>
     ));
-  const searchUser = async (user: string) => {
+  const searchUser = async (input: string) => {
     try {
       const { data } = await axios.get(
-        `${process.env.REACT_APP_SERVER_URL}/user/search?number=${user}`,
+        `${process.env.REACT_APP_SERVER_URL}/user/search?query=${input}`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("access_token")}`,
           },
         }
       );
-      return data.users;
+
+      return data.users.filter(
+        (searchedUser: userType) => user.number !== searchedUser.number
+      );
     } catch (error) {
       if (error.response.status) {
         setError(error.response.status);
@@ -91,7 +96,6 @@ const SearchUserModal: FC<Props> = ({
     return users.map((user: userType) => user.id);
   };
   const makeReservation = (time: string) => {
-    console.log(description);
     return axios.post(
       `${process.env.REACT_APP_SERVER_URL}/apply/seminar-room`,
       {

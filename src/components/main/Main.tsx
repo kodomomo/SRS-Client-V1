@@ -118,7 +118,6 @@ const Main: FC<Props> = ({
     try {
       const token = localStorage.getItem("access_token");
       if (!token || token === "null" || token.length <= 0) return;
-      console.log(process.env.REACT_APP_SERVER_URL);
       const { data } = await axios.get(
         `${process.env.REACT_APP_SERVER_URL}/apply/my/seminar-room`,
         {
